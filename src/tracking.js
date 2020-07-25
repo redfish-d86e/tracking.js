@@ -223,7 +223,7 @@
    * @param {object} opt_options Optional configuration to the tracker.
    * @private
    */
-  tracking.trackVideo_ = function(element, tracker) {
+  tracking.trackVideo_ = function(element, tracker, opt_options) {
     var canvas = document.createElement('canvas');
     var context = canvas.getContext('2d');
     var width;
@@ -257,7 +257,13 @@
           } catch (err) {}
           tracking.trackCanvasInternal_(canvas, tracker);
         }
-        requestAnimationFrame_();
+        if(opt_options.timeout){
+          setTimeout(function(){
+            requestAnimationFrame_();
+          }, opt_options.timeout);
+        }else{
+          requestAnimationFrame_();
+        }
       });
     };
 
