@@ -257,7 +257,7 @@
           } catch (err) {}
           tracking.trackCanvasInternal_(canvas, tracker);
         }
-        if(opt_options.timeout){
+        if(opt_options.timeout && typeof opt_options.timeout === "number"){
           setTimeout(function(){
             requestAnimationFrame_();
           }, opt_options.timeout);
