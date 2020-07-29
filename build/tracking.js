@@ -254,7 +254,7 @@
 // if the user want to use it, it can create it himself
     var requestId;
     var requestAnimationFrame_ = function() {
-      requestId = window.requestAnimationFrame(function() {
+      // requestId = window.requestAnimationFrame(function() {
         if (element.readyState === element.HAVE_ENOUGH_DATA) {
           try {
             // Firefox v~30.0 gets confused with the video readyState firing an
@@ -271,7 +271,7 @@
         }else{
           requestAnimationFrame_();
         }
-      });
+      // });
     };
 
     var task = new tracking.TrackerTask(tracker);
