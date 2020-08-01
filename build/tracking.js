@@ -187,7 +187,7 @@
   tracking.trackCanvasInternal_ = function(element, tracker) {
     var width = element.width;
     var height = element.height;
-    var context = element.getContext('2d');
+    var context = element.getContext('2d', {alpha: false});
     var imageData = context.getImageData(0, 0, width, height);
     tracker.track(imageData.data, width, height);
   };
@@ -232,7 +232,7 @@
    */
   tracking.trackVideo_ = function(element, tracker, opt_options) {
     var canvas = document.createElement('canvas');
-    var context = canvas.getContext('2d');
+    var context = canvas.getContext('2d', {alpha: false});
     var width;
     var height;
 
@@ -260,7 +260,7 @@
             // Firefox v~30.0 gets confused with the video readyState firing an
             // erroneous HAVE_ENOUGH_DATA just before HAVE_CURRENT_DATA state,
             // hence keep trying to read it until resolved.
-            context.drawImage(element, 0, 0, width, height);
+            context.drawImage(element, 0, 0, width, height, 0, 0, width * 0.3, height * 0.3);
           } catch (err) {}
           tracking.trackCanvasInternal_(canvas, tracker);
         }
